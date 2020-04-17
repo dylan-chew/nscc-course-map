@@ -1,0 +1,7 @@
+{
+  "name": "courseMap",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
