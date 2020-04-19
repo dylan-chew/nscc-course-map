@@ -35,7 +35,7 @@ const InstructorsList: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log("Getting rocket data...");
+    console.log("Getting instructor data...");
 
     getData((data) => {
       setInstructors(

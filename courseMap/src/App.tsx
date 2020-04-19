@@ -18,6 +18,7 @@ import {
 } from "ionicons/icons";
 import AcademicYearsList from "./pages/AcademicYearsList";
 import CoursesList from "./pages/CoursesList";
+import CourseDetails from "./pages/CourseDetails";
 import DiplomaProgramsList from "./pages/DiplomaProgramsLists";
 import InstructorsList from "./pages/InstructorsList";
 import InstructorDetails from "./pages/InstructorDetails";
@@ -57,6 +58,7 @@ const App: React.FC = () => (
             component={DiplomaProgramsList}
             exact={true}
           />
+          <Route path="/courses/:id" component={CourseDetails} exact={true} />
           <Route path="/instructors" component={InstructorsList} exact={true} />
           <Route
             path="/instructors/:id"

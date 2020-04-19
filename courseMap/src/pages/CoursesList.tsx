@@ -31,7 +31,7 @@ const CoursesList: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log("Getting rocket data...");
+    console.log("Getting courses data...");
 
     getData((data) => {
       setCourses(data);
@@ -64,7 +64,7 @@ const CoursesList: React.FC = () => {
     .map((course: any, i) => {
       if (course)
         return (
-          <IonItem key={i}>
+          <IonItem href={`/courses/${course.Id}`} key={i}>
             {course.CourseCode} - {course.Title}
           </IonItem>
         );
@@ -74,7 +74,7 @@ const CoursesList: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>courses</IonTitle>
+          <IonTitle>Courses</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonToolbar>
