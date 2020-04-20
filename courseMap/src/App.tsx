@@ -20,6 +20,7 @@ import AcademicYearsList from "./pages/AcademicYearsList";
 import CoursesList from "./pages/CoursesList";
 import CourseDetails from "./pages/CourseDetails";
 import DiplomaProgramsList from "./pages/DiplomaProgramsLists";
+import DiplomaProgramDetails from "./pages/DiplomaProgramDetails";
 import InstructorsList from "./pages/InstructorsList";
 import InstructorDetails from "./pages/InstructorDetails";
 
@@ -53,15 +54,30 @@ const App: React.FC = () => (
             exact={true}
           />
           <Route path="/courses" component={CoursesList} exact={true} />
+          <Route path="/courses/:id" component={CourseDetails} exact={true} />
           <Route
             path="/diplomaprograms"
             component={DiplomaProgramsList}
             exact={true}
           />
-          <Route path="/courses/:id" component={CourseDetails} exact={true} />
+          <Route
+            path="/diplomaprograms/:id"
+            component={DiplomaProgramDetails}
+            exact={true}
+          />
           <Route path="/instructors" component={InstructorsList} exact={true} />
           <Route
-            path="/instructors/:id"
+            path="/instructors/coursestaught/:id"
+            component={InstructorDetails}
+            exact={true}
+          />
+          <Route
+            path="/instructors/coursestaught/courses/:id"
+            component={CourseDetails}
+            exact={true}
+          />
+          <Route
+            path="/diplomaprograms/advisingassignments/:id"
             component={InstructorDetails}
             exact={true}
           />

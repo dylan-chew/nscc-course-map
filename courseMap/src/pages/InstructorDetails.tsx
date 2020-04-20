@@ -34,25 +34,30 @@ interface InstructorDetailPageProps
 const InstructorDetail: React.FC<InstructorDetailPageProps> = ({ match }) => {
   // definig the state for this component
   const [coursesTaught, setCoursesTaught] = useState<Array<any>>([]);
+  const [advisingAssignments, setAdvisingAssignments] = useState<Array<any>>(
+    []
+  );
   const [instructor, setInstructor] = useState<String>("");
 
   const getData = (callback: (data: any) => void) => {
+    console.log(match.path);
+
     console.log(`Getting instructor details for id ${match.params.id}`);
     const url = `https://w0254970-apim.azure-api.net/instructors/${match.params.id}`;
 
     fetch(url)
       .then((res) => res.json())
       .then((json) => {
-        // set the state of our rockets
         callback(json);
       });
   };
 
   useEffect(() => {
-    console.log("Getting rocket data...");
+    console.log("Getting courses taught data...");
 
     getData((data) => {
       setCoursesTaught(data.CoursesTaught);
+      setAdvisingAssignments(data.AdvisingAssignments);
       setInstructor(`${data.FirstName} ${data.LastName}`);
     });
   }, []);
@@ -62,15 +67,49 @@ const InstructorDetail: React.FC<InstructorDetailPageProps> = ({ match }) => {
 
     getData((data) => {
       setCoursesTaught(data.CoursesTaught);
+      setAdvisingAssignments(data.AdvisingAssignments);
       event.detail.complete();
     });
+  };
+
+  let coursesTaughtDisplay = coursesTaught.map((course: any, i) => {
+    return (
+      <IonItem
+        routerLink={`/instructors/coursestaught/courses/${course.Id}`}
+        key={i}
+      >
+        {course.CourseCode} - {course.Title}
+      </IonItem>
+    );
+  });
+
+  let advisingAssignmentsDisplay = advisingAssignments.map((aa: any, i) => {
+    return (
+      <IonItem key={i}>
+        {aa.DiplomaProgram} - {aa.DiplomaProgramYear} -{" "}
+        {aa.DiplomaProgramYearSection} - {aa.AcademicYear}
+      </IonItem>
+    );
+  });
+
+  const isCoursesTaught = () => {
+    if (match.path == "/instructors/coursestaught/:id") {
+      return true;
+    } else {
+      console.log("falseflaslfle");
+      return false;
+    }
   };
 
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Courses Taught by {instructor}</IonTitle>
+          <IonTitle>
+            {isCoursesTaught()
+              ? `Courses Taught by ${instructor}`
+              : `${instructor}'s Advising Assignments`}
+          </IonTitle>
           <IonButtons slot="start">
             <IonBackButton defaultHref="/instructors" />
           </IonButtons>
@@ -86,13 +125,9 @@ const InstructorDetail: React.FC<InstructorDetailPageProps> = ({ match }) => {
           ></IonRefresherContent>
         </IonRefresher>
         <IonList>
-          {coursesTaught.map((course: any, i) => {
-            return (
-              <IonItem routerLink={`/courses/${course.Id}`} key={i}>
-                {course.CourseCode} - {course.Title}
-              </IonItem>
-            );
-          })}
+          {isCoursesTaught()
+            ? coursesTaughtDisplay
+            : advisingAssignmentsDisplay}
         </IonList>
       </IonContent>
     </IonPage>

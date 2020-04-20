@@ -42,7 +42,6 @@ const CourseDetail: React.FC<CourseDetailPageProps> = ({ match }) => {
     fetch(url)
       .then((res) => res.json())
       .then((json) => {
-        // set the state of our rockets
         callback(json);
       });
   };

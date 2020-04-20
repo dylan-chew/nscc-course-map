@@ -29,7 +29,6 @@ const InstructorsList: React.FC = () => {
     fetch(url)
       .then((res) => res.json())
       .then((json) => {
-        // set the state of our rockets
         callback(json);
       });
   };
@@ -86,7 +85,10 @@ const InstructorsList: React.FC = () => {
         <IonList>
           {instructors.map((instructor: Instructor, i) => {
             return (
-              <IonItem href={`/instructors/${instructor.id}`} key={i}>
+              <IonItem
+                href={`/instructors/coursestaught/${instructor.id}`}
+                key={i}
+              >
                 {instructor.lastName}, {instructor.firstName}
               </IonItem>
             );
