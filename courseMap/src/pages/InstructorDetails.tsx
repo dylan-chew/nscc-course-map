@@ -93,7 +93,7 @@ const InstructorDetail: React.FC<InstructorDetailPageProps> = ({ match }) => {
   });
 
   const isCoursesTaught = () => {
-    if (match.path == "/instructors/coursestaught/:id") {
+    if (match.path === "/instructors/coursestaught/:id") {
       return true;
     } else {
       console.log("falseflaslfle");

@@ -81,7 +81,11 @@ const AcademicYearsList: React.FC = () => {
         </IonRefresher>
         <IonList>
           {academicYears.map((ay: any, i) => {
-            return <IonItem key={i}>{ay.title}</IonItem>;
+            return (
+              <IonItem routerLink={`/academicyears/${ay.id}`} key={i}>
+                {ay.title}
+              </IonItem>
+            );
           })}
         </IonList>
       </IonContent>

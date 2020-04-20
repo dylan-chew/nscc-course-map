@@ -17,6 +17,7 @@ import {
   libraryOutline,
 } from "ionicons/icons";
 import AcademicYearsList from "./pages/AcademicYearsList";
+import AcademicYearsDetails from "./pages/AcademicYearsDetails";
 import CoursesList from "./pages/CoursesList";
 import CourseDetails from "./pages/CourseDetails";
 import DiplomaProgramsList from "./pages/DiplomaProgramsLists";
@@ -42,19 +43,38 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import SemestersDetails from "./pages/SemestersDetails";
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
+          {/* academic years routes */}
           <Route
             path="/academicyears"
             component={AcademicYearsList}
             exact={true}
           />
+          <Route
+            path="/academicyears/:id"
+            component={AcademicYearsDetails}
+            exact={true}
+          />
+          <Route
+            path="/academicyears/semesters/:id"
+            component={SemestersDetails}
+            exact={true}
+          />
+          <Route
+            path="/academicyears/semesters/courses/:id"
+            component={CourseDetails}
+            exact={true}
+          />
+          {/* courses routes */}
           <Route path="/courses" component={CoursesList} exact={true} />
           <Route path="/courses/:id" component={CourseDetails} exact={true} />
+          {/* diploma programs routes */}
           <Route
             path="/diplomaprograms"
             component={DiplomaProgramsList}
@@ -65,6 +85,12 @@ const App: React.FC = () => (
             component={DiplomaProgramDetails}
             exact={true}
           />
+          <Route
+            path="/diplomaprograms/advisingassignments/:id"
+            component={InstructorDetails}
+            exact={true}
+          />
+          {/* instructors routes */}
           <Route path="/instructors" component={InstructorsList} exact={true} />
           <Route
             path="/instructors/coursestaught/:id"
@@ -76,11 +102,7 @@ const App: React.FC = () => (
             component={CourseDetails}
             exact={true}
           />
-          <Route
-            path="/diplomaprograms/advisingassignments/:id"
-            component={InstructorDetails}
-            exact={true}
-          />
+
           <Route
             path="/"
             render={() => <Redirect to="/academicyears" />}
