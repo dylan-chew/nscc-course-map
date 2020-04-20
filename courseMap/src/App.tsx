@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import {
   IonApp,
   IonIcon,
@@ -44,6 +44,7 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 import SemestersDetails from "./pages/SemestersDetails";
+import HomePage from "./pages/HomePage";
 
 const App: React.FC = () => (
   <IonApp>
@@ -103,11 +104,7 @@ const App: React.FC = () => (
             exact={true}
           />
 
-          <Route
-            path="/"
-            render={() => <Redirect to="/academicyears" />}
-            exact={true}
-          />
+          <Route path="/" component={HomePage} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="AcademicYears" href="/academicyears">

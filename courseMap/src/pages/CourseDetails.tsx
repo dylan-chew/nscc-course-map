@@ -12,13 +12,11 @@ import {
   IonButtons,
   IonBackButton,
   IonCard,
-  IonImg,
   IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
   IonCardContent,
   IonListHeader,
-  IonButton,
 } from "@ionic/react";
 import { RefresherEventDetail } from "@ionic/core";
 import "./InstructorsList.css";

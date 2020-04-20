@@ -33,7 +33,7 @@ const AcademicYearsList: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log("Getting rocket data...");
+    console.log("Getting academic years data...");
 
     getData((data) => {
       setAcademicYears(

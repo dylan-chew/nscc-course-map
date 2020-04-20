@@ -15,8 +15,6 @@ import {
   IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
-  IonCardContent,
-  IonListHeader,
 } from "@ionic/react";
 import { RefresherEventDetail } from "@ionic/core";
 import "./DiplomaProgramDetails.css";
