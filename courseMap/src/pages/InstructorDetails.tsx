@@ -88,7 +88,7 @@ const InstructorDetail: React.FC<InstructorDetailPageProps> = ({ match }) => {
         <IonList>
           {coursesTaught.map((course: any, i) => {
             return (
-              <IonItem href={`/instructors/courses/${course.Id}`} key={i}>
+              <IonItem routerLink={`/courses/${course.Id}`} key={i}>
                 {course.CourseCode} - {course.Title}
               </IonItem>
             );

@@ -64,7 +64,7 @@ const CoursesList: React.FC = () => {
     .map((course: any, i) => {
       if (course)
         return (
-          <IonItem href={`/courses/${course.Id}`} key={i}>
+          <IonItem routerLink={`/courses/${course.Id}`} key={i}>
             {course.CourseCode} - {course.Title}
           </IonItem>
         );

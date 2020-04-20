@@ -18,6 +18,7 @@ import {
   IonCardTitle,
   IonCardContent,
   IonListHeader,
+  IonButton,
 } from "@ionic/react";
 import { RefresherEventDetail } from "@ionic/core";
 import "./InstructorsList.css";
@@ -89,7 +90,7 @@ const CourseDetail: React.FC<CourseDetailPageProps> = ({ match }) => {
         <IonToolbar>
           <IonTitle>Courses Details</IonTitle>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/courses" />
+            <IonBackButton />
           </IonButtons>
         </IonToolbar>
       </IonHeader>
@@ -102,9 +103,6 @@ const CourseDetail: React.FC<CourseDetailPageProps> = ({ match }) => {
             refreshingText="Refreshing..."
           ></IonRefresherContent>
         </IonRefresher>
-        {/* <IonList>
-          <IonItem> {courseDetails.Title}</IonItem>
-        </IonList> */}
         <IonCard>
           <IonCardHeader>
             <IonCardSubtitle>{courseDetails.CourseCode}</IonCardSubtitle>
